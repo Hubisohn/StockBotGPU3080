@@ -8,6 +8,7 @@ from selenium.webdriver.common.keys import Keys
 from webdriver_manager.chrome import ChromeDriverManager
 from os import system
 import re
+from colorama import Fore, Back, Style
 
 def EVGA():
     driver = webdriver.Chrome(ChromeDriverManager().install())
@@ -20,7 +21,8 @@ def EVGA():
     titel = soup.find('h1', attrs={'class', 'product-name'})
     preis = soup.find('span', attrs={'class', 'price'})
 
-    print(titel.text)
+    print(Fore.YELLOW + "EVGA")
+    print(Fore.WHITE + titel.text)
     print(preis.text)
 
     driver.close()

@@ -8,9 +8,11 @@ from selenium.webdriver.common.keys import Keys
 from webdriver_manager.chrome import ChromeDriverManager
 from os import system
 import re
+from colorama import Fore, Back, Style
 
 def IDEALO():
     driver = webdriver.Chrome(ChromeDriverManager().install())
+
     driver.get("https://www.idealo.it/confronta-prezzi/200628360/pny-geforce-rtx-3080.html")
     #driver.find_element_by_id("offersofproduct").send_keys(Keys.F5)
 
@@ -20,7 +22,8 @@ def IDEALO():
     titel = soup.find('h1', attrs={'class', 'oopStage-title'})
     preis = soup.find('span', attrs={'class', 'table-cell oopStage-priceRangePrice'})
 
-    print(titel.text)
+    print(Fore.YELLOW + "Idealo")
+    print(Fore.WHITE + titel.text)
     print(preis.text)
 
     driver.close()

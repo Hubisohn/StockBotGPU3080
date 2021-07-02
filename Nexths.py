@@ -8,21 +8,22 @@ from selenium.webdriver.common.keys import Keys
 from webdriver_manager.chrome import ChromeDriverManager
 from os import system
 import re
-while True:
-#def StockX():
+from colorama import Fore, Back, Style
+
+def Nexths():
     driver = webdriver.Chrome(ChromeDriverManager().install())
-    driver.get("https://stockx.com/it-it/nvidia-evga-geforce-rtx-3080-xc3-graphics-card-10g-p5-3885-kr")
+    driver.get("https://www.nexths.it/Products/details/sku/4895173623387")
     #driver.find_element_by_id("offersofproduct").send_keys(Keys.F5)
 
     content = driver.page_source.encode('utf-8').strip()
     soup = bs4.BeautifulSoup(content, "html.parser")
 
-    titel = soup.find('h1', attrs={'class': 'name'})
-    preis = soup.find('div', attrs={'class': 'sale-value'})
-    verfug = soup.find('div', attrs={'class': 'inner'})
+    titel = soup.find('h1', attrs={'class': 'itempage_title'})
+    preis = soup.find('span', attrs={'class': 'prezzo_normale oswald'})
+    verfug = soup.find('a', attrs={'class': 'btn btn-success'})
 
-    print("StockX")
-    print("https://stockx.com/it-it/nvidia-evga-geforce-rtx-3080-xc3-graphics-card-10g-p5-3885-kr")
+    print(Fore.YELLOW + "Nexths")
+    print(Fore.WHITE + "https://www.nexths.it/Products/details/sku/4895173623387")
     print(titel.text)
     print(preis.text)
     print(verfug.text)
